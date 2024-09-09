@@ -14,6 +14,19 @@ arm_controller:
     root: "torso_lift_link"
     tip: "gripper_link"
     autostart: true
+  cartesian_pose_controller:
+    type: "robot_controllers/CartesianPoseController"
+    root_name: "torso_lift_link"
+    tip_name: "gripper_link"
+    autostart: true
+    fb_trans:
+      p: 1.25
+      i: 0.0
+      d: 1.25
+    fb_rot:
+      p: 1.25
+      i: 0.0
+      d: 0.1
 
 arm_with_torso_controller:
   follow_joint_trajectory:
@@ -67,6 +80,7 @@ gazebo:
   default_controllers:
     - "arm_controller/follow_joint_trajectory"
     - "arm_controller/gravity_compensation"
+    - "arm_controller/cartesian_pose_controller"  # Add the CartesianPoseController to the default controllers list
     - "arm_with_torso_controller/follow_joint_trajectory"
     - "base_controller"
     - "head_controller/follow_joint_trajectory"
@@ -74,6 +88,7 @@ gazebo:
     - "torso_controller/follow_joint_trajectory"
     - "gripper_controller/gripper_action"
     - "bellows_controller"
+
   l_wheel_joint:
     position:
       p: 0.0
