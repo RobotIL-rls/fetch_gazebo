@@ -20,13 +20,13 @@ arm_controller:
     tip_name: "gripper_link"
     autostart: true
     fb_trans:
-      p: 1.25
-      i: 0.0
+      p: 0.8
+      i: 0.01
       d: 1.25
     fb_rot:
-      p: 1.25
-      i: 0.0
-      d: 0.1
+      p: 0.12
+      i: 0.01
+      d: 0.0
 
 arm_with_torso_controller:
   follow_joint_trajectory:
