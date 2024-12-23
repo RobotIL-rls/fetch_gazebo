@@ -14,7 +14,7 @@ arm_controller:
     root: "torso_lift_link"
     tip: "gripper_link"
     autostart: true
-  cartesian_pose_controller:
+  cartesian_pose_vel_controller:
     type: "robot_controllers/CartesianPoseVelController"
     root_name: "torso_lift_link"
     tip_name: "gripper_link"
