@@ -40,6 +40,64 @@ arm_with_torso_controller:
       - forearm_roll_joint
       - wrist_flex_joint
       - wrist_roll_joint
+  joint_velocity_controller:
+    type: "robot_controllers/JointVelocityController"
+    joints:
+      - torso_lift_joint
+      - shoulder_pan_joint
+      - shoulder_lift_joint
+      - upperarm_roll_joint
+      - elbow_flex_joint
+      - forearm_roll_joint
+      - wrist_flex_joint
+      - wrist_roll_joint
+    # Common PID values for all joints
+    pid:
+      p: 50.0
+      i: 1.0
+      d: 1.0
+      i_clamp: 5.0
+    # Joint-specific PID values (optional - will override common values)
+    pid_shoulder_pan_joint:
+      p: 50.0
+      i: 1.0
+      d: 1.0
+      i_clamp: 10.0
+    pid_shoulder_lift_joint:
+      p: 50.0
+      i: 1.0
+      d: 1.0
+      i_clamp: 10.0
+    pid_upperarm_roll_joint:
+      p: 50.0
+      i: 1.0
+      d: 1.0
+      i_clamp: 5.0
+    pid_elbow_flex_joint:
+      p: 50.0
+      i: 1.0
+      d: 1.0
+      i_clamp: 5.0
+    pid_forearm_roll_joint:
+      p: 50.0
+      i: 1.0
+      d: 1.0
+      i_clamp: 5.0
+    pid_wrist_flex_joint:
+      p: 50.0
+      i: 1.0
+      d: 1.0
+      i_clamp: 2.0
+    pid_wrist_roll_joint:
+      p: 50.0
+      i: 1.0
+      d: 1.0
+      i_clamp: 2.0
+    pid_torso_lift_joint:
+      p: 50.0
+      i: 1.0
+      d: 1.0
+      i_clamp: 0.0
 
 torso_controller:
   follow_joint_trajectory:
@@ -82,6 +140,7 @@ gazebo:
     - "arm_controller/gravity_compensation"
     - "arm_controller/cartesian_pose_vel_controller"  # Add the CartesianPoseController to the default controllers list
     - "arm_with_torso_controller/follow_joint_trajectory"
+    - "arm_with_torso_controller/joint_velocity_controller"
     - "base_controller"
     - "head_controller/follow_joint_trajectory"
     - "head_controller/point_head"
